@@ -1,20 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template"
+>
+
 <head>
     <meta charset="UTF-8">
     <title> Gestion des patients </title>
     <link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css">
 </head>
 <body>
+
+<div layout:fragment="content1">
   <div class="container mt-2">
       <div class="card">
-          <div class="card-header">Liste des patients</div>
+          <div class="card-header" >Liste des patients</div>
           <div class="card-body">
               <form method="get" th:action="@{index}">
                   <label> Keyword </label>
                   <input type="text" name="keyword" th:value="${keyword}">
                   <button type="submit" class="btn btn-primary">Chercher</button>
               </form>
+              <div>
               <table class="table">
                   <thead>
                   <tr>
@@ -29,7 +36,7 @@
                       <td th:text="${p.malade}"></td>
                       <td th:text="${p.score}"></td>
                       <td>
-                         <a onclick="return confirm('Etes vous sure?')" class="btn btn-danger" th:href="@{delete(id=${p.id}, keyword=${keyword}, page=${currentPage})}">
+                          <a onclick="return confirm('Etes vous sure?')" class="btn btn-danger" th:href="@{delete(id=${p.id}, keyword=${keyword}, page=${currentPage})}">
                              Delete
                          </a>
                       </td>
@@ -46,7 +53,16 @@
               </ul>
           </div>
       </div>
+          <footer class="bg-primary text-center ">
+
+              <div class="text-center" style="background-color: cornflowerblue ">
+                  EMSI © 2022 Copyright:
+
+              </div>
+          </footer>
   </div>
+</div>
+</div>
 
 </body>
 </html>
