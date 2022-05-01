@@ -36,7 +36,10 @@
                       <td th:text="${p.malade}"></td>
                       <td th:text="${p.score}"></td>
                       <td>
-                         <a onclick="return confirm('Etes vous sure?')" class="btn btn-danger" th:href="@{delete(id=${p.id}, keyword=${keyword}, page=${currentPage})}">
+                          <a class="btn btn-success" th:href="@{/update(id=${p.id}, keyword=${keyword}, page=${currentPage})}">
+                              Edit
+                          </a>
+                          <a onclick="return confirm('Are you sure you want to delete this patient ?')" class="btn btn-danger" th:href="@{/delete(id=${p.id}, keyword=${keyword}, page=${currentPage})}">
                              Delete
                          </a>
                       </td>
@@ -55,8 +58,10 @@
       </div>
           <footer class="bg-primary text-center ">
 
-              <div class="text-center" style="background-color: cornflowerblue ">
-                  EMSI © 2022 Copyright:
+              <div class="text-center"  style="background-color: black">
+                  <div style="color: white">
+                  Ecole Nationale des Sciences Appliquées © 2022 Copyright:
+                  </div>
 
               </div>
           </footer>

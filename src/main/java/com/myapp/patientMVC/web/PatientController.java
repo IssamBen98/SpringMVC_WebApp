@@ -20,6 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 public class PatientController {
     private PatientRepository patientRepository;
+
     @GetMapping(path = "/index")
     public String patients(Model model,
                            @RequestParam(name = "page",defaultValue = "0") int page,
@@ -39,10 +40,12 @@ public class PatientController {
         patientRepository.deleteById(id);
         return "redirect:/index?page="+page+"&keyword="+keyword;
     }
-    @GetMapping("/")
+    @GetMapping("/home")
     public String home() {
-        return "redirect:/index";
+        return "home";
     }
+
+
 
     @GetMapping("/patients")
     @ResponseBody
@@ -59,12 +62,28 @@ public class PatientController {
 
     @PostMapping(path = "/save")
     public String save(Model model, @Valid Patient patient,
-                       BindingResult bindingResult)
+                       BindingResult bindingResult,
+                       @RequestParam(defaultValue = "0") int page,
+                       @RequestParam(defaultValue = "") String key
+                      )
     {
         if(bindingResult.hasErrors())
             return "PatientForm" ;
         patientRepository.save(patient);
-        return "redirect/PatientForm";
+        return "redirect:/index?page="+page+"&keyword="+key;
+    }
+    @GetMapping("/update")
+    public String Update(Model model, Long id, int page, String key)
+    {
+        Patient p = patientRepository.findById(id).orElse(null);
+        if(p == null)
+            throw new RuntimeException("Patient introuvable !");
+        model.addAttribute("patient", p);
+        model.addAttribute("page", page);
+        model.addAttribute("key", key);
+
+
+        return "EditPatient";
     }
 
 }
