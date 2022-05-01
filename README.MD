@@ -4,20 +4,13 @@
 
   <ul>
     <li>Add layout</li>
- 
       <img src="captures/Partie2.png">
       <img src="captures/navbar.png">
-  
-  
-    <li>Ajout d'un nouveau patient</li>
-  
+  <li>Ajout d'un nouveau patient</li>
       <img src="captures/navbar.png">
       <img src="captures/Ajout_1.png">
       <img src="captures/Ajout_2.png">
-
-  
-    <li>Modification des informations d'un patient</li>
-  
+  <li>Modification des informations d'un patient</li>
       <img src="captures/modif_1.png">
       <img src="captures/modif_2.png">
       <img src="captures/modif_3.png">
